@@ -5,9 +5,13 @@ interface IProps {
     count:number;
 }
 
-const Container = styled.div``;
 
-const Number: React.FunctionComponent<IProps> = ({ count }) => <Container>{count}</Container>;
+const Container = styled.span<{ isBlue:boolean }>`
+    color: ${props => (props.isBlue ? props.theme.blueColor : "black")};
+`;
+
+const Number: React.FunctionComponent<IProps> = ({ count }) => (
+    <Container isBlue={count > 10}>{count}</Container>);
 
 export default Number;
 
